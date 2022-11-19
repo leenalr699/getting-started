@@ -11,7 +11,7 @@ pipeline {
              sh "docker tag docker/getting-started leenalr/docker-study:v1"
              script {
                docker.withRegistry("",'dockerhub') {
-                  sh("docker push leenalr/docker-study")
+                  sh "docker push leenalr/docker-study"
                 }
              }
             }
