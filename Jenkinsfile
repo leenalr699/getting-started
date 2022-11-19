@@ -10,8 +10,8 @@ pipeline {
              sh "docker build -t docker/getting-started ."
              sh "docker tag docker/getting-started leenalr/docker-study:v1"
 
-             withDockerRegistry([url: "https://hub.docker.com/repository/docker/leenalr/docker-study", credentialsId: "dockerhub"]) {
-                    sh("docker push leenalr/docker-study")
+             docker.withRegistry("https://hub.docker.com/repository/docker/leenalr/docker-study",'dockerhub') {
+               sh("docker push leenalr/docker-study")
                 }
             }
         }
