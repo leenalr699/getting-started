@@ -2,9 +2,7 @@ pipeline {
     options {
         timeout(time: 1, unit: 'HOURS')
     }
-    agent {
-        label 'ubuntu-1804 && amd64 && docker'
-    }
+    agent any
     stages {
         stage('build and push') {
            steps {
