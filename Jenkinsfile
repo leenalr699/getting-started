@@ -1,4 +1,9 @@
 pipeline {
+    environment { 
+        registry = "leenalr/docker-study" 
+        registryCredential = 'dockerhub' 
+        dockerImage = ''
+    }
     options {
         timeout(time: 1, unit: 'HOURS')
     }
@@ -10,7 +15,7 @@ pipeline {
              sh "docker build -t docker/getting-started ."
              sh "docker tag docker/getting-started leenalr/docker-study:v1"
              script {
-               docker.withRegistry("",'dockerhub') {
+               docker.withRegistry("",'registryCredential') {
                   sh "docker push leenalr/docker-study:v1"
                 }
              }
