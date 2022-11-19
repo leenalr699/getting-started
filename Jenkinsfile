@@ -7,13 +7,11 @@ pipeline {
     }
     stages {
         stage('build and push') {
-            when {
-                branch 'master'
-            }
-            sh "docker build -t docker/getting-started ."
+           steps {
 
-            steps {
-                withDockerRegistry([url: "", credentialsId: "dockerbuildbot-index.docker.io"]) {
+             sh "docker build -t docker/getting-started ."
+
+             withDockerRegistry([url: "https://hub.docker.com/repository/docker/leenalr/docker-study", credentialsId: "dockerhub"]) {
                     sh("docker push docker/getting-started")
                 }
             }
