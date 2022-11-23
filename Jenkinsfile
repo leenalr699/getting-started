@@ -9,6 +9,7 @@ pipeline {
         stage('build and push') {
             
            steps {
+               
 
              sh "docker build -t docker/getting-started ."
                // This change is done just for make the pipeline fail
@@ -17,7 +18,7 @@ pipeline {
                  
                docker.withRegistry("",'registryCredential') {
                    
-                  sh "docker push leenalr/docker-study:v1"
+                  sh "docker push leenalr/docker-study:v2"
                 }
              }
            }
