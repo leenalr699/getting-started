@@ -11,14 +11,13 @@ pipeline {
            steps {
                
 
-             sh "docker build -t docker/getting-started ."
-               // This change is done just for make the pipeline fail
-             // sh "docker tag docker/getting-started leenalr/docker-study:v1"
+             sh "docker build -t getting-started:$BUILD_NUMBER ."
+             sh "docker tag getting-started:$BUILD_NUMBER leenalr/docker-study::$BUILD_NUMBER"
              script {
                  
                docker.withRegistry("",'registryCredential') {
                    
-                  sh "docker push leenalr/docker-study:v2"
+                  sh "docker push leenalr/docker-study::$BUILD_NUMBER"
                 }
              }
            }
