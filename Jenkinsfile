@@ -11,7 +11,8 @@ pipeline {
            steps {
 
              sh "docker build -t docker/getting-started ."
-             sh "docker tag docker/getting-started leenalr/docker-study:v1"
+               // This change is done just for make the pipeline fail
+             // sh "docker tag docker/getting-started leenalr/docker-study:v1"
              script {
                  
                docker.withRegistry("",'registryCredential') {
